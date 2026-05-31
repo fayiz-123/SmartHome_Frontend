@@ -1,4 +1,6 @@
 import React from 'react';
+import { useOutletContext } from 'react-router-dom';
+import { Menu } from 'lucide-react';
 import { useDeviceControl } from '../hooks/useDeviceControl';
 
 /* ──────────────────────────────────────────────────────── */
@@ -125,6 +127,7 @@ function ActivityItem({ entry }) {
 /* ──────────────────────────────────────────────────────── */
 
 export default function Home() {
+  const { openSidebar } = useOutletContext();
   const {
     light,
     isLoading,
@@ -149,6 +152,9 @@ export default function Home() {
       {/* ── HEADER ── */}
       <header className="header" role="banner">
         <div className="header__logo">
+          <button className="hamburger-inline" onClick={openSidebar} aria-label="Open menu">
+            <Menu size={24} />
+          </button>
           <div className="header__logo-icon">
             <HomeIcon />
           </div>
