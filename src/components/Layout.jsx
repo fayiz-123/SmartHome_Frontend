@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Menu } from 'lucide-react';
 import Sidebar from './Sidebar';
 
 export default function Layout() {
@@ -8,20 +7,11 @@ export default function Layout() {
 
   return (
     <div className="app-container">
-      {/* Global Hamburger Menu Button */}
-      <button 
-        className="hamburger-btn" 
-        onClick={() => setIsSidebarOpen(true)}
-        aria-label="Open menu"
-      >
-        <Menu size={28} />
-      </button>
-
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
       
       {/* Main Content Area */}
       <div className="main-content">
-        <Outlet />
+        <Outlet context={{ openSidebar: () => setIsSidebarOpen(true) }} />
       </div>
     </div>
   );

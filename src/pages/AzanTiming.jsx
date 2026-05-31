@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Clock, Calendar } from 'lucide-react';
+import { useOutletContext } from 'react-router-dom';
+import { MapPin, Clock, Calendar, Menu } from 'lucide-react';
 
 export default function AzanTiming() {
+  const { openSidebar } = useOutletContext();
   const [apiData, setApiData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -69,6 +71,9 @@ export default function AzanTiming() {
     <div className="azan-page">
       <header className="header" style={{ marginBottom: '10px' }}>
         <div className="header__logo">
+          <button className="hamburger-inline" onClick={openSidebar} aria-label="Open menu">
+            <Menu size={24} />
+          </button>
           <div className="header__title-group">
             <h1 className="header__title">Azan Timings</h1>
             <p className="header__subtitle">Daily Prayer Schedule</p>

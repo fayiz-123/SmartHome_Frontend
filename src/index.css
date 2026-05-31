@@ -729,29 +729,16 @@ body::before {
   width: 100%;
 }
 
-.hamburger-btn {
-  position: fixed;
-  top: var(--space-md);
-  left: var(--space-md);
-  z-index: 50;
-  background: var(--bg-card);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-md);
+.hamburger-inline {
+  background: transparent;
+  border: none;
   color: var(--text-primary);
-  width: 44px;
-  height: 44px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  box-shadow: var(--glass-shadow);
-  transition: all var(--transition-normal);
-}
-
-.hamburger-btn:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--glass-border-active);
+  padding: 4px;
+  margin-right: 8px; /* space between hamburger and logo */
 }
 
 .sidebar-overlay {
@@ -850,7 +837,6 @@ body::before {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 60px; /* space for hamburger */
 }
 
 /* Override existing app class for nested layout */
