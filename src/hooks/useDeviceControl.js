@@ -29,7 +29,7 @@ export function useDeviceControl() {
       } catch (err) {
         console.error('[Device] Failed to load state:', err);
         setConnectionStatus('offline');
-        setErrorMsg('Cannot reach backend — is your Express server running on localhost:5000?');
+        setErrorMsg('Cannot reach backend — is your Express server running?');
         // Still show a default light card so UI doesn't break
         setLight({ id: 'light1', name: 'Main Light', room: 'Living Room', gpio: 2, isOn: false });
       } finally {
@@ -91,7 +91,7 @@ export function useDeviceControl() {
 
       // User-friendly error message
       if (err.code === 'ERR_NETWORK' || err.code === 'ECONNREFUSED') {
-        setErrorMsg('Cannot reach backend — check your Express server at localhost:5000');
+        setErrorMsg('Cannot reach backend — check your Express server');
       } else if (err.response) {
         setErrorMsg(`Server error ${err.response.status}: ${err.response.data?.message ?? 'Unknown error'}`);
       } else {

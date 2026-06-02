@@ -14,7 +14,7 @@ export default function AzanTiming() {
     const fetchTimings = async () => {
       try {
         setLoading(true);
-        const response = await fetch('https://api.aladhan.com/v1/timings/31-05-2026?latitude=10.1076&longitude=76.3516&method=1');
+        const response = await fetch('https://api.aladhan.com/v1/timings?latitude=10.1076&longitude=76.3516&method=1');
         const data = await response.json();
         
         if (data.code === 200) {
@@ -105,7 +105,7 @@ export default function AzanTiming() {
           <div className="azan-location">
             <MapPin size={18} />
             {/* Hardcoded for now based on API coords in previous example, update later as needed */}
-            <span>Kochi, Kerala (Coordinates: 10.10, 76.35)</span>
+            <span>Aluva, Kerala</span>
           </div>
 
           {timings && (
