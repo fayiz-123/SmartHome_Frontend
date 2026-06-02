@@ -7,6 +7,7 @@ export default function AzanTiming() {
   const [apiData, setApiData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const apiUrl = import.meta.env.VITE_API_URL || '/api';
 
   useEffect(() => {
     // Replace this when user provides the actual API.
@@ -14,13 +15,17 @@ export default function AzanTiming() {
     const fetchTimings = async () => {
       try {
         setLoading(true);
-        const response = await fetch('https://api.aladhan.com/v1/timings?latitude=10.1076&longitude=76.3516&method=1');
+        const response = await fetch(`${apiUrl}/azan`);
+        console.log("response is" ,response);
         const data = await response.json();
+        console.log("data is", data)
         
-        if (data.code === 200) {
+        if (data.success && data.data?.code === 200) {
+          setApiData(data.data.data);
+        } else if (data.code === 200) {
           setApiData(data.data);
         } else {
-          setError('Failed to fetch timings');
+          setError(data.message || 'Failed to fetch timings');
         }
       } catch (err) {
         setError('Error fetching data. Please try again.');
