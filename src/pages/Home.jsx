@@ -317,8 +317,8 @@ export default function Home() {
               </p>
               <p className="connect-banner__desc">
                 {connectionStatus === 'online'
-                  ? 'Sending commands to localhost:5000/api/led → ESP32 (192.168.1.100)'
-                  : 'Start your Express server at localhost:5000 to control the ESP32'}
+                  ? 'Sending commands to backend → ESP32 (192.168.1.100)'
+                  : 'Start your Express server to control the ESP32'}
               </p>
             </div>
           </div>
